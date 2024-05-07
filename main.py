@@ -5,7 +5,7 @@ import random
 
 
 # Creation of three different arrays of numbers
-unsorted_array = [random.randint(1, 100) for _ in range(100)]
+unsorted_array = [random.randint(1, 1000) for _ in range(1000)]
 sorted_array = sorted(unsorted_array)
 A = sorted_array[: len(sorted_array) // 2]
 B = sorted_array[len(sorted_array) // 2 :]
@@ -24,15 +24,17 @@ def insertion_sort(lst):
     return lst
 
 
-insertion_unsorted = timeit.timeit(lambda: insertion_sort(unsorted_array), number=1000)
+insertion_unsorted = timeit.timeit(
+    lambda: insertion_sort(unsorted_array[:]), number=1000
+)
 print("insertion_unsorted:", insertion_unsorted)
 
 insertion_partially_sorted = timeit.timeit(
-    lambda: insertion_sort(partially_sorted_array), number=1000
+    lambda: insertion_sort(partially_sorted_array[:]), number=1000
 )
 print("insertion_partially_sorted:", insertion_partially_sorted)
 
-insertion_sorted = timeit.timeit(lambda: insertion_sort(sorted_array), number=1000)
+insertion_sorted = timeit.timeit(lambda: insertion_sort(sorted_array[:]), number=1000)
 print("insertion_sorted:", insertion_sorted)
 
 
@@ -72,15 +74,15 @@ def merge(left, right):
     return result
 
 
-merge_unsorted = timeit.timeit(lambda: merge_sort(unsorted_array), number=1000)
+merge_unsorted = timeit.timeit(lambda: merge_sort(unsorted_array[:]), number=1000)
 print("merge_unsorted:", merge_unsorted)
 
 merge_partially_sorted = timeit.timeit(
-    lambda: merge_sort(partially_sorted_array), number=1000
+    lambda: merge_sort(partially_sorted_array[:]), number=1000
 )
 print("merge_partially_sorted:", merge_partially_sorted)
 
-merge_sorted = timeit.timeit(lambda: merge_sort(sorted_array), number=1000)
+merge_sorted = timeit.timeit(lambda: merge_sort(sorted_array[:]), number=1000)
 print("merge_sorted:", merge_sorted)
 
 
@@ -91,13 +93,13 @@ def timsort(arr):
     return sorted_arr
 
 
-timsort_unsorted = timeit.timeit(lambda: timsort(unsorted_array), number=1000)
+timsort_unsorted = timeit.timeit(lambda: timsort(unsorted_array[:]), number=1000)
 print("timsort_unsorted:", timsort_unsorted)
 
 timsort_partially_sorted = timeit.timeit(
-    lambda: timsort(partially_sorted_array), number=1000
+    lambda: timsort(partially_sorted_array[:]), number=1000
 )
 print("timsort_partially_sorted:", timsort_partially_sorted)
 
-timsort_sorted = timeit.timeit(lambda: timsort(sorted_array), number=1000)
+timsort_sorted = timeit.timeit(lambda: timsort(sorted_array[:]), number=1000)
 print("timsort_sorted:", timsort_sorted)
